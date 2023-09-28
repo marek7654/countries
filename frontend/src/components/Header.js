@@ -1,19 +1,19 @@
-const Header = () => {
+const Header = ({ title }) => {
   return (
-    <header class='pb-3 mb-4 border-bottom'>
+    <header className='pb-3 mb-4 border-bottom'>
       <a
         href='/'
-        class='d-flex align-items-center text-dark text-decoration-none'
+        className='d-flex align-items-center text-dark text-decoration-none'
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='40'
           height='32'
-          class='me-2'
+          className='me-2'
           viewBox='0 0 118 94'
           role='img'
         >
-          <title>Bootstrap</title>
+          <title>Kraje i stolice</title>
           <path
             fill-rule='evenodd'
             clip-rule='evenodd'
@@ -21,7 +21,7 @@ const Header = () => {
             fill='currentColor'
           ></path>
         </svg>
-        <span class='fs-4'>Kraje i stolice</span>
+        <span class='fs-4'>{title}</span>
       </a>
     </header>
   );

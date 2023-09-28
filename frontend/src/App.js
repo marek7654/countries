@@ -1,9 +1,14 @@
+import Header from "./components/Header";
+import Jumbotron from "./components/Jumbotron";
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <main>
+      <div className='container py-4'>
+        <Header title='Kraje i stolice'/>
+        <Jumbotron/>
+      </div>
+    </main>
   );
 }
 
