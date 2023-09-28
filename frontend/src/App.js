@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react';
 import Header from "./components/Header";
 import Jumbotron from "./components/Jumbotron";
 import { fetchData } from './helpers/api-connector';
+import Footer from './components/Footer';
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -28,7 +29,8 @@ function App() {
     <main>
       <div className='container py-4'>
         <Header title='Kraje i stolice'/>
-        <Jumbotron loadingStatus={loading} countries={countries} error={error} />
+        <Jumbotron loadingStatus={loading} countries={countries} error={error}/>
+        <Footer/>
       </div>
     </main>
   );
