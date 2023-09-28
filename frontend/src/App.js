@@ -29,7 +29,6 @@ function App() {
   };
 
   const selectHandler = (countryId) => {
-    console.log('select', countryId);
     getData(countryId);
   };
 

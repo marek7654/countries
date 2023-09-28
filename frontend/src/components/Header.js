@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 const Header = ({ title }) => {
   return (
     <header className='pb-3 mb-4 border-bottom'>
@@ -27,4 +29,4 @@ const Header = ({ title }) => {
   );
 };
 
-export default Header;
+export default memo(Header);

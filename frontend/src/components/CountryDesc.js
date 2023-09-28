@@ -1,6 +1,4 @@
 const CountryDesc = ({ data }) => {
-  console.log(data);
-
   const population = (number) => {
     if (number > 1000000) {
       return parseFloat(number / 1000000).toFixed(2) + ' mln.';
@@ -12,8 +10,8 @@ const CountryDesc = ({ data }) => {
   };
 
   return (
-    <div className='h-100 p-5 text-white bg-dark rounded-3'>
-      <h2>Kraj: {data.country_name}</h2>
+    <div className='h-100 p-4 p-lg-5 text-white bg-dark rounded-3'>
+      <h2 className='mb-3'>Kraj: {data.country_name}</h2>
       <p className='mb-1'>
         <b>Powierzchnia kraju:</b> {parseInt(data.area_km2)} km<sup>2</sup>
       </p>

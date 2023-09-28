@@ -7,7 +7,7 @@ const MapWrapper = (props) => {
   const { zoom } = props;
 
   const [position, setPosition] = useState(props.coordinates);
-
+  
   const Recenter = ({ center, zoom }) => {
     const map = useMap();
     map.setView(center, zoom);
@@ -15,7 +15,6 @@ const MapWrapper = (props) => {
   };
 
   useEffect(() => {
-    console.log('change position 2', latitude, longitude);
     if (latitude && longitude) {
       setPosition([latitude, longitude]);
     }

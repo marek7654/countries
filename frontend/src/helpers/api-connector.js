@@ -13,7 +13,7 @@ export const fetchData = async (id = false) => {
     }
 
     const data = await response.json();
-    console.log('data', data);
+
     return data;
   } catch (error) {
     console.error('Wystąpił błąd podczas pobierania danych z API:', error);
