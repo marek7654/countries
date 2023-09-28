@@ -1,5 +1,5 @@
 const Jumbotron = (props) => {
-  const { loading, countries, error } = props;
+  const { loading, countries, error, onSelectChange } = props;
 
   const spinner = (
     <div className='spinner-border text-primary' role='status'>
@@ -7,8 +7,16 @@ const Jumbotron = (props) => {
     </div>
   );
 
+  const changeHandler = (event) => {
+    onSelectChange(event.target.value);
+  }
+
   const select = (
-    <select className='form-select form-select-lg' aria-label='countries list'>
+    <select
+      className='form-select form-select-lg'
+      aria-label='countries list'
+      onChange={changeHandler}
+    >
       <option defaultValue='0'>Znajdź kraj</option>
       {countries.map((country) => {
         return (

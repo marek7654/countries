@@ -1,25 +1,36 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 
-import Header from "./components/Header";
-import Jumbotron from "./components/Jumbotron";
+import Header from './components/Header';
+import Jumbotron from './components/Jumbotron';
 import { fetchData } from './helpers/api-connector';
 import Footer from './components/Footer';
+import CountryDesc from './components/CountryDesc';
 
 function App() {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [countryDetails, setCountryDetails] = useState(null);
 
-  const getData = async () => {
+  const getData = async (id = false) => {
     try {
-      const data = await fetchData();
-      setCountries(data);
-    } catch(err) {
+      const data = await fetchData(id);
+      if (id) {
+        setCountryDetails(data);
+      } else {
+        setCountries(data);
+      }
+    } catch (err) {
       setError(err);
     } finally {
-      setLoading(false);
+      if (!id) setLoading(false);
     }
-  } 
+  };
+
+  const selectHandler = (countryId) => {
+    console.log('select', countryId);
+    getData(countryId);
+  }
 
   useEffect(() => {
     getData();
@@ -28,9 +39,20 @@ function App() {
   return (
     <main>
       <div className='container py-4'>
-        <Header title='Kraje i stolice'/>
-        <Jumbotron loadingStatus={loading} countries={countries} error={error}/>
-        <Footer/>
+        <Header title='Kraje i stolice' />
+        <Jumbotron
+          loadingStatus={loading}
+          countries={countries}
+          error={error}
+          onSelectChange={selectHandler}
+        />
+        <div className='row align-items-md-stretch'>
+          <div className='col-md-6'>
+            {countryDetails && <CountryDesc data={countryDetails}/> }
+          </div>
+          <div className='col-md-6'></div>
+        </div>
+        <Footer />
       </div>
     </main>
   );
