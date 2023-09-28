@@ -5,6 +5,7 @@ import Jumbotron from './components/Jumbotron';
 import { fetchData } from './helpers/api-connector';
 import Footer from './components/Footer';
 import CountryDesc from './components/CountryDesc';
+import MapWrapper from './components/MapWrapper';
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -30,7 +31,7 @@ function App() {
   const selectHandler = (countryId) => {
     console.log('select', countryId);
     getData(countryId);
-  }
+  };
 
   useEffect(() => {
     getData();
@@ -48,9 +49,19 @@ function App() {
         />
         <div className='row align-items-md-stretch'>
           <div className='col-md-6'>
-            {countryDetails && <CountryDesc data={countryDetails}/> }
+            {countryDetails && <CountryDesc data={countryDetails} />}
           </div>
-          <div className='col-md-6'></div>
+          <div className='col-md-6'>
+            {countryDetails && (
+              <MapWrapper
+                coordinates={[
+                  countryDetails.latitude,
+                  countryDetails.longitude,
+                ]}
+                zoom='7'
+              />
+            )}
+          </div>
         </div>
         <Footer />
       </div>
