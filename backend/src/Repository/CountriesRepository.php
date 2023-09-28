@@ -16,7 +16,7 @@ class CountriesRepository extends ServiceEntityRepository
     public function findAllCountries(): array
     {
         $qb = $this->createQueryBuilder('c')
-            ->select('c.countryName as country', 'c.countryId as id')
+            ->select('c.countryName as name', 'c.countryId as id')
             ->getQuery();
 
         return $qb->getResult();
