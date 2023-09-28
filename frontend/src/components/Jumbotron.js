@@ -1,4 +1,25 @@
-const Jumbotron = () => {
+const Jumbotron = (props) => {
+  const { loading, countries, error } = props;
+
+  const spinner = (
+    <div className='spinner-border text-primary' role='status'>
+      <span className='visually-hidden'>Loading...</span>
+    </div>
+  );
+
+  const select = (
+    <select className='form-select form-select-lg' aria-label='countries list'>
+      <option defaultValue='0'>Znajdź kraj</option>
+      {countries.map((country) => {
+        return (
+          <option key={country.id} value={country.id}>
+            {country.name}
+          </option>
+        );
+      })}
+    </select>
+  );
+
   return (
     <div className='p-5 mb-4 bg-light rounded-3'>
       <div className='container-fluid py-5'>
@@ -7,15 +28,9 @@ const Jumbotron = () => {
           Wybierz kraj, który Cię interesuje, aby dowiedzieć się podstawowych
           informacji na jego temat oraz zlokalizować stolicę.
         </p>
-        <select
-          className='form-select form-select-lg'
-          aria-label='.form-select-lg example'
-        >
-          <option selected>Znajdź kraj</option>
-          <option value='1'>One</option>
-          <option value='2'>Two</option>
-          <option value='3'>Three</option>
-        </select>
+        {loading && spinner}
+        {!loading && select}
+        {error && <p>Błąd: {error.message}</p>}
       </div>
     </div>
   );
