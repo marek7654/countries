@@ -47,7 +47,7 @@ function App() {
           onSelectChange={selectHandler}
         />
         <div className='row align-items-md-stretch'>
-          <div className='col-md-6'>
+          <div className='col-md-6 mb-4 mb-md-0'>
             {countryDetails && <CountryDesc data={countryDetails} />}
           </div>
           <div className='col-md-6'>
